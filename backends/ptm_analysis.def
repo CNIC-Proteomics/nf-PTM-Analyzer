@@ -1,0 +1,120 @@
+Bootstrap: library
+From: ubuntu:22.04
+
+%labels
+    Author jmrodriguezc@cnic.es
+    Version v0.1.0
+
+%help
+    This Singularity container is used for the PTM-analysis pipelines:
+    1. ReportAnalysis
+
+%arguments
+    # Declare variables
+    # REPORT-ANALYSIS ---------------------------------------------------------------------------------------------
+
+    # REPORT_ANALYSIS_HOME: Setting up the variables
+    REPORT_ANALYSIS_VERSION=v1.01
+    REPORT_ANALYSIS_HOME=/opt/report-analysis
+
+%environment
+    # Export env
+    # export MSF_HOME RAWPARSER_HOME
+
+%setup
+    # # Create the home
+    # mkdir -p "${SINGULARITY_ROOTFS}{{REPORT_ANALYSIS_HOME}}"
+
+%files
+
+%post
+    # Install main packages
+    apt-get update -y
+    apt-get install -y vim
+    apt-get install -y git
+    apt-get install -y unzip
+
+    ################
+    # REQUIREMENTS #
+    ################
+
+    # Update main packages (just in case)
+    apt-get update -y
+
+    # Install Python packages
+    apt-get -y install python-is-python3 python3-pip python3-venv
+    python -m pip install --upgrade pip
+    DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata python3-tk
+
+    # Install R packages
+    apt-get install -y r-base
+    Rscript -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager"); BiocManager::install("limma")'
+    Rscript -e 'install.packages("logging")'
+    Rscript -e 'install.packages("yaml")'
+    Rscript -e 'install.packages("optparse")'
+
+
+
+    #
+    # REPORT_ANALYSIS ---------------------------------------------------------------------------------------------
+    #
+
+    # Clone the repository
+    git clone https://github.com/CNIC-Proteomics/ReportAnalysis.git  --branch {{REPORT_ANALYSIS_VERSION}}  {{REPORT_ANALYSIS_HOME}}
+
+    # Python environment --
+    cd {{REPORT_ANALYSIS_HOME}} && python -m venv env
+    . {{REPORT_ANALYSIS_HOME}}/env/bin/activate && pip install -r {{REPORT_ANALYSIS_HOME}}/python_requirements.txt
+
+
+
+
+
+    # To end the build
+    NOW=`date`
+    echo "export NOW=\"${NOW}\"" >> $SINGULARITY_ENVIRONMENT
+
+%runscript
+    echo "Container was created $NOW"
+    echo "Arguments received: $*"
+    exec echo "$@"
+
+%test
+    # Check if Ubuntu has been installed
+    grep -q NAME=\"Ubuntu\" /etc/os-release
+    if [ $? -eq 0 ]; then
+        echo "Container base is Ubuntu as expected."
+    else
+        echo "Container base is not Ubuntu."
+        exit 1
+    fi
+
+    # Check if Python has been installed
+    PYTHON_VER=$(python --version | awk '{print $2}' | tr -d '"')
+    if [ "${PYTHON_VER}" != "" ]; then
+        echo "Python ${PYTHON_VER} has been installed as expected."
+    else
+        echo "Python has not been installed."
+        exit 1
+    fi
+
+    # REPORT_ANALYSIS ---------------------------------------------------------------------------------------------
+
+    # Check if REPORT_ANALYSIS has been installed
+    DIR={{REPORT_ANALYSIS_HOME}}
+    if [ -d "${DIR}" ]; then
+        echo "The ${DIR} directory exists."
+    else
+        echo "The ${DIR} directory does not exit."
+        exit 1
+    fi
+
+    # Check if REPORT_ANALYSIS has been installed
+    REPORT_ANALYSIS_test=$(cd {{REPORT_ANALYSIS_HOME}} && . env/bin/activate && python 1_NMpyCompare/NMpyCompare.py -h 2>&1 | grep "usage:")
+    if [ "${REPORT_ANALYSIS_test}" != "" ]; then
+        echo "REPORT_ANALYSIS ${REPORT_ANALYSIS_test} has been installed as expected."
+    else
+        echo "REPORT_ANALYSIS has not been installed."
+        exit 1
+    fi
+
