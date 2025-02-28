@@ -35,6 +35,14 @@ Generating Entity and OpenPGP Key Pair... Done
 Enter encryption passphrase :
 ```
 
+TIP: You can Push Unsigned images with 
+```
+singularity push -U ptm_analysis_${IMAGE_VERSION}.sif library://proteomicscnic/next-launcher/ptm_analysis:${IMAGE_VERSION}
+```
+
+
+
+<!-- 
 I HAVE TO DO THE FOLLOWING STEP ???
 Verifying an image is quite easy, just run the verify command within your terminal.
 ```
@@ -45,15 +53,11 @@ Data integrity checked, authentic and signed by:
 John Doe <john.doe@example.com>, KeyID 284972D6D4FC6713
 ```
 
-TIP: You can Push Unsigned images with 
-```
-singularity push -U ptm_analysis_${IMAGE_VERSION}.sif library://proteomicscnic/next-launcher/ptm_analysis:${IMAGE_VERSION}
-```
 
 Push image
 ```
 singularity push ptm_analysis_${IMAGE_VERSION}.sif library://proteomicscnic/next-launcher/ptm_analysis:${IMAGE_VERSION}
-```
+``` -->
 
 
 
