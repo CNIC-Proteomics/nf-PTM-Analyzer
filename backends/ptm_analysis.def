@@ -3,7 +3,7 @@ From: ubuntu:22.04
 
 %labels
     Author jmrodriguezc@cnic.es
-    Version v0.1.0
+    Version v0.1.1
 
 %help
     This Singularity container is used for the PTM-analysis pipelines:
@@ -14,7 +14,7 @@ From: ubuntu:22.04
     # REPORT-ANALYSIS ---------------------------------------------------------------------------------------------
 
     # REPORT_ANALYSIS_HOME: Setting up the variables
-    REPORT_ANALYSIS_VERSION=v1.01
+    REPORT_ANALYSIS_VERSION=v1.03
     REPORT_ANALYSIS_HOME=/opt/report-analysis
 
 %environment
@@ -110,7 +110,7 @@ From: ubuntu:22.04
     fi
 
     # Check if REPORT_ANALYSIS has been installed
-    REPORT_ANALYSIS_test=$(cd {{REPORT_ANALYSIS_HOME}} && . env/bin/activate && python 1_NMpyCompare/NMpyCompare.py -h 2>&1 | grep "usage:")
+    REPORT_ANALYSIS_test=$(cd {{REPORT_ANALYSIS_HOME}} && . env/bin/activate && python 6_qTableReport/qReportMaker.py -h 2>&1 | grep "usage:")
     if [ "${REPORT_ANALYSIS_test}" != "" ]; then
         echo "REPORT_ANALYSIS ${REPORT_ANALYSIS_test} has been installed as expected."
     else
