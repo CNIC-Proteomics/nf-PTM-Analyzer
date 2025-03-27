@@ -3,22 +3,6 @@
 #
 NMpyCompare:
 
-    # Column name of low level (FirstRowName#SecondRowName)
-    low_level: pgm#LEVEL
-    # Column name of high level (FirstRowName#SecondRowName)
-    high_level: p#LEVEL
-
-    # Column name of integration
-    integration: Z_pgm2p
-
-    # ScanFreq
-    scanfreq: pgmFreq#REL
-
-    # Columns considered to find non modified (FirstRowName#SecondRowName)
-    NM_columns:
-    - g#REL:
-        - NM
-
 
 
 #
@@ -26,27 +10,15 @@ NMpyCompare:
 #
 LimmaCompare:
 
-    # Possible types 
-    # - limma
-    # - limma_with_duplicates
-    # - t-test
-    test_type:
+  # Possible types 
+  # - limma
+  # - limma_with_duplicates
+  # - t-test
+  test_type:
     - limma
     - t-test
 
-    # Integrations used to apply Limma
-    # [ [LowLevel_firstRow, LowLevel_secondRow], integration ]
-    ColumnNames:
-    - [ [pdm, LEVEL], Z_pdm2pdmq]
-    - [ [pgm, LEVEL], Z_pgm2pgmq]
-    - [ [pgm, LEVEL], Z_pgm2p]
-    - [ [pgm, LEVEL], Z_pgm2p_dNM]
-    - [ [p, LEVEL], Z_p2qf]
-    - [ [qf, LEVEL], Z_qf2q]
-    - [ [q, LEVEL], Z_q2all]
-    - [ [p, LEVEL], Z_p2pq]
-    
-    hypothesis_testing:
+  hypothesis_testing:
     - [ H, C ]
 
 
@@ -56,35 +28,20 @@ LimmaCompare:
 #
 FDRoptimizer:
 
-    # Column 
-    # [ [LowLevel_firstRow, LowLevel_secondRow] , [Freqs_firstRow, Freqs_secondRow], Integration]
-    ColumnNames:
-        - [ [pgm, LEVEL], [pgmFreq, REL], Z_pgm2p_limma-NM(g&REL) ]
-        - [ [pgm, LEVEL], [pgmFreq, REL], Z_pgm2p_dNM_limma ]
-        - [ [p, LEVEL], [pFreq, REL], Z_p2qf_limma ]
-        - [ [qf, LEVEL], [qfFreq, REL], Z_qf2q_limma ]
-        - [ [q, LEVEL], [qFreq, REL], Z_q2all_limma ]
-        - [ [pgm, LEVEL], [pgmFreq, REL], Z_pgm2p_limma ]
-        - [ [pdm, LEVEL], [ScanFreq, REL], Z_pdm2pdmq_limma ]
-        - [ [pgm, LEVEL], [pgmFreq, REL], Z_pgm2pgmq_limma ]
-        - [ [p, LEVEL], [pFreq, REL], Z_p2pq_limma ]
+  # Pair groups to which calculate FDR
+  groups:
+    - H-C
 
-    # Pair groups to which calculate FDR
-    groups:
-        - H-C
+  # FDR thresholds applied
+  FDR_Thr:
+    - 0.01
+    - 0.05
 
-    # FDR thresholds applied
-    FDR_Thr:
-        - 0.01
-        - 0.05
-        #- 0.1
-        #- 1
+  # Scan frequency window
+  Window: [0, 50]
 
-    # Scan frequency window
-    Window: [0, 50]
-
-    # Add column with FDR of at maximum value
-    AddFDR: True
+  # Add column with FDR of at maximum value
+  AddFDR: True
 
 
 
@@ -93,68 +50,25 @@ FDRoptimizer:
 #
 PTMMap:
 
-  pgm_column_name: pgm
-  pgm_second_header_column_name: LEVEL
-  g_column_name: g
-  g_second_header_column_name: REL
-  a_column_name: a
-  a_second_header_column_name: REL
-  n_column_name: n
-  n_second_header_column_name: REL
-  e_column_name: e
-  e_second_header_column_name: REL
-  p_column_name: p
-  p_second_header_column_name: LEVEL
-  q_column_name: q
-  q_second_header_column_name: LEVEL
-  d_column_name: d
-  d_second_header_column_name: REL
-  qf_column_name: qf
-  qf_second_header_column_name: LEVEL
-  pFreq_column_name: pFreq
-  pFreq_second_header_column_name: REL
-  qfFreq_column_name: qfFreq
-  qfFreq_second_header_column_name: REL
-  pgmFreq_column_name: pgmFreq
-  pgmFreq_second_header_column_name: REL
-  first_b_column_name: first_b
-  first_b_second_header_column_name: REL
-  description_column_name: description
-  description_second_header_column_name: REL
-  Missing_Cleavages_column_name: Missing_Cleavage
-  Missing_Cleavages_second_header_column_name: REL
+  # Plot parameters
+  font_size: 50
+  grid: No
+  plot_width: 1700
+  plot_height: 850
 
-  LPS_p2qf_column_name: Z_p2qf_logLimma_H-C # -LPS of p2qf integration
-  LPS_qf2q_column_name: Z_qf2q_logLimma_H-C # -LPS of qf2q integration
-  LPS_pgm2p_column_name: Z_pgm2p_logLimma_H-C # -LPS of pfm2p integration
-  LPS_pgm2p_NM_column_name: Z_pgm2p_dNM_logLimma_H-C # -LPS of pgm2p_MN integration
+  # How Non-modified are named
+  NM: NM
 
-  LPS_p2qf_second_header_column_name: LPS
-  LPS_qf2q_second_header_column_name: LPS
-  LPS_pgm2p_second_header_column_name: LPS
-  LPS_pgm2p_NM_second_header_column_name: LPS
+  # Group to be analysed
+  groups:
+    - H-C
 
-  Filter_pgm2p_NM_column_name: Z_pgm2p_dNM_limma_H-C # Filtering column (qvalues, pvalue, etc.) of pgm2p integration corrected by NMCompare.py
-  Filter_pgm2p_column_name: Z_pgm2p_limma_NM_ONLY_H-C # Filtering column (qvalues, pvalue, etc.) of pgm2p integration calculated ONLY with NM
-  Filter_p2qf_column_name: Z_p2qf_limma_H-C # Filtering column (qvalues, pvalue, etc.) of p2qf integration
-  Filter_qf2q_column_name: Z_qf2q_limma_H-C # Filtering column (qvalues, pvalue, etc.) of qf2q integration
-
-  Filter_pgm2p_NM_second_header_column_name: qvalue
-  Filter_pgm2p_second_header_column_name: qvalue
-  Filter_p2qf_second_header_column_name: qvalue
-  Filter_qf2q_second_header_column_name: qvalue
-
-  threshold_pgm2p_NM: 0.05 # Threshold of filtering column (pgm2p_NM integration)
-  threshold_pgm2p: 0.05 # Threshold of filtering column (pgm2p integration)
-  threshold_p2qf: 0.05 # Threshold of filtering column (p2qf integration)
-  threshold_qf2q: 0.05 # Threshold of filtering column (qf2q integration)
-
-  pgmFreqThreshold: 0 # Threshold
-
-  NM: NM # How Non-modified are named
-
-  path_plots_with_threshold: plots_FDR # Folder in which filtered PTM Maps will be saved
-  path_plots_Without_threshold: plots # Folder in which completed PTM Maps will be saved
+  # Threshold of filtering for the given integrations: pgm2p_NM, pgm2p, p2qf, qf2q
+  threshold_pgm2p_NM: 0.05
+  threshold_pgm2p: 0.05
+  threshold_p2qf: 0.05
+  threshold_qf2q: 0.05
+  pgmFreqThreshold: 0
 
 
 
@@ -163,189 +77,31 @@ PTMMap:
 #
 qReportMaker:
 
-    # # Input file (Report generated by FDRoptimizer)
-    # infile: S:\U_Proteomica\UNIDAD\DatosCrudos\Jose_Antonio_Enriquez\Ratones_Heteroplasmicos\HF\PTM_JMR_withNextflow\Quantifications-RBR\15-11-2024\03_ReportStats\heart\3_FDRoptimizer\FDR_LIMMA_NM_q2all-pdmTMerged.tsv
-    # # Output file
-    # outfolder: S:\U_Proteomica\UNIDAD\DatosCrudos\Jose_Antonio_Enriquez\Ratones_Heteroplasmicos\HF\PTM_JMR_withNextflow\Quantifications-RBR\15-11-2024\03_ReportStats\heart\4_qTableReport
-    # # Path to file relating protein Uniprot ID (first col) to other information (e.g. Category)
-    # q2info: S:\U_Proteomica\UNIDAD\DatosCrudos\Jose_Antonio_Enriquez\Ratones_Heteroplasmicos\HF\PTM_JMR_withNextflow\Quantifications-RBR\15-11-2024\03_ReportStats\heart\4_qTableReport\myMitocarta.tsv
+  # FDR threshold used
+  qvThr:
+    - 0.01
+    - 0.05
+    - 0.1
 
-    #
-    # Plot path: Path to the folder containing Cristina Plots
-    # - /Path/to/CompletePlot
-    # - /Path/to/FilteredPlot
+  # Group contrasts to be analysed
+  groups:
+    - H-C
 
-    # Leave it blank to use default folder:
-    #   - [outfolder]/PTMMaps/{groups}/plots
-    #   - [outfolder]/PTMMaps/{groups}/plots_FDR
-    # plotFolder: 
-    #     - 
-    #     - 
+  #
+  # PTM Frequency Table options
+  #
 
-    # Number of works in parallel
-    n_cpu: 8
+  # Window size used to estimate probability
+  x: 5
 
-    # FDR threshold used
-    qvThr:
-        - 0.01
-        - 0.05
-        - 0.1
+  # q-value column used to filter PTM (aa, dm)
+  # Possible values: 'binom1-PSM', 'binom1-PDM', 'binom2-PSM', 'binom2-PDM'
+  binom: binom1-PSM
 
-    # Group contrasts to be analysed
-    groups:
-        - H-C
+  # Binomial q-value threshold applied to filter PTM
+  q_thr: 0.01
 
-
-    #
-    # Columns information
-    #
-
-    # First row column name
-    # Second row column name
-
-    # Column name containing group
-    gCol: 
-        - g
-        - REL
-
-
-    # Column name containing modified aminoacid
-    aCol: 
-        - a
-        - REL
-        
-    # Column name containing peptide position of modification
-    mCol: 
-        - m
-        - REL
-
-    # Name of the group corresponding to non-modified
-    NMgroup: NM
-
-
-    #
-    # LEVELS
-    #
-
-    # Column containing pgm in the following format: PEP[MOD]TIDE
-    pdmCol:
-        - pgm
-        - LEVEL
-
-    # Column containing p
-    pCol:
-        - p
-        - LEVEL
-
-    # Column containing qf
-    qfCol:
-        - qf
-        - LEVEL
-
-    # Column containing q
-    qCol:
-        - q
-        - LEVEL
-
-    # Column containing protein description
-    qDescCol:
-        - description
-        - REL
-
-    #
-    # Frequencies
-    #
-
-    # Column containing scan frequency of pgm
-    pdmFreq:
-        - pgmFreq
-        - REL
-
-    # Column containing scan frequency of p 
-    pFreq:
-        - pFreq
-        - REL
-
-    # Column containing scan frequency of qf
-    qfFreq:
-        - qfFreq
-        - REL
-
-    # Column containing protein frequency
-    qFreq:
-        - qFreq
-        - REL
-
-    #
-    # Mean differences
-    #
-
-    # Column containing positive values for "up" pgm and negative values for "down"
-    # pgm in Z_pdm2p_dNM. For example, mean difference between Treatment Group and Control Group
-    sign:
-        - Z_pgm2p_dNM_dX
-        - dX
-
-    # Column containing positive values for "up" pdm_NM and negative values for "down"
-    # pdm in Z_pdm2p (without NM correction). For example, mean difference between Treatment Group and Control Group
-    signNM:
-        - Z_pgm2p_dX
-        - dX
-
-    sign_p:
-        - Z_p2qf_dX
-        - dX
-        
-    sign_qf:
-        - Z_qf2q_dX
-        - dX
-        
-
-    #
-    # qValue/pValue
-    #
-
-    # Column containing qvalue/pvalue for Z_pgm2p_dNM (pgm corrected by their non modified version)
-    qvalue_dNM:
-        - Z_pgm2p_dNM_limma
-        - qvalue
-
-    # Column containing qvalue/pvalue for Z_pgm2p considering only non modified pgm
-    qvalue_NM:
-        - Z_pgm2p_limma_NM_ONLY
-        - qvalue
-
-    # Column containing qvalue of p
-    qvalue_p:
-        - Z_p2qf_limma
-        - qvalue
-        
-    # Column containing qvalue of qf
-    qvalue_qf:
-        - Z_qf2q_limma
-        - qvalue
-
-    # Column containing number of missing cleavages
-    missing_cleavages:
-        - Missing_Cleavage
-        - REL
-
-
-    #
-    # PTM Frequency Table options
-    #
-
-    # Window size used to estimate probability
-    x: 5
-
-    # q-value column used to filter PTM (aa, dm)
-    # Possible values: 'binom1-PSM', 'binom1-PDM', 'binom2-PSM', 'binom2-PDM'
-    binom: binom1-PSM
-
-    # Binomial q-value threshold applied to filter PTM
-    q_thr: 0.01
-
-    # Values represented in pivot table
-    # Possible values: 'x-PSM', 'x-PDM'
-    values_pivot: x-PSM
+  # Values represented in pivot table
+  # Possible values: 'x-PSM', 'x-PDM'
+  values_pivot: x-PSM
 
