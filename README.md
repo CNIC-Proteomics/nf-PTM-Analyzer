@@ -36,7 +36,7 @@ For more information, read the [How to install Git](docs/Git.md) section.
 
 Export an environment variable to define the version:
 ```
-export PIPELINE_VERSION=0.1.0
+export PIPELINE_VERSION=0.1.1
 ```
 Note: The list of releases is located on the [releases page](https://github.com/CNIC-Proteomics/nf-PTM-Analyzer/releases).
 
@@ -51,7 +51,7 @@ With the *--recursive* parameter, the submodules repositories are cloned as well
 
 Export an environment variable to define the version of singularity image:
 ```
-export IMAGE_VERSION=0.1.0
+export IMAGE_VERSION=0.1.1
 ```
 Note: The list of releases is located on the [singularity repository page](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis).
 
@@ -85,8 +85,8 @@ ln -s ptm_analysis_${IMAGE_VERSION}.sif ptm_analysis.sif
 1. Download sample files
 ```
 cd samples && \
-wget https://zenodo.org/records/14446572/files/nf-PTM-Analyzer_Heteroplasmic_Heart.zip?download=1 -O nf-PTM-Analyzer_Heteroplasmic_Heart.zip && \
-unzip nf-PTM-Analyzer_Heteroplasmic_Heart.zip && \
+wget https://zenodo.org/records/15096592/files/heteroplasmic_heart.zip?download=1 -O heteroplasmic_heart.zip && \
+unzip heteroplasmic_heart.zip && \
 cd ..
 ```
 

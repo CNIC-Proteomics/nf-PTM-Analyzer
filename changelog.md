@@ -1,4 +1,31 @@
 ___
+## 0.1.1
+
+### Date 📅 *2025_03*
+
+### Changes in detail
+
++ ReportAnalysis:
+  + New update to the PTMMap program: includes plot parameters, the ability to download the map in SVG format, and more.
+  + PTM maps are obtained by group.
+
+### Image Version history
+
++ ReportAnalysis (v1.03):
+  + New update to the PTMMap program: includes plot parameters, the ability to download the map in SVG format, and more.
+  + Update and improve documentation.
+  + Update the PTMMap program to accept simplified input parameters.
+  + PTM maps are obtained by group.
+
+
+| Singularity image (version)                                                                      | Code                                                                     | Version |
+|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|---------|
+| [ptm_analysis:0.1.1](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                          |         |
+|                                                                                                  | [ReportAnalysis](https://github.com/CNIC-Proteomics/ReportAnalysis)      | v1.03   |
+
+
+
+___
 ## 0.1.0
 
 ### Date 📅 *2025_02*
