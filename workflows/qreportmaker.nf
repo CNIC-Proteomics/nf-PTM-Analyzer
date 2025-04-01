@@ -35,16 +35,16 @@ workflow QREPORTPTMMAPMAKER {
     QREPORT_PTMMAP_MAKER('04', input_file, qmeta_file, createYamlParamStrChannel(params_file, ['PTMMap','qReportMaker'])) // generate string with the current parameters from the given file
 
     // return channels
-    ch_PTMmaps      = QREPORT_PTMMAP_MAKER.out.PTMmaps
-    ch_PTMmaps_FDR  = QREPORT_PTMMAP_MAKER.out.PTMmaps_FDR
-    ch_qReports     = QREPORT_PTMMAP_MAKER.out.qReports
-    ch_FreqTables   = QREPORT_PTMMAP_MAKER.out.FreqTables
+    ch_PTMmaps           = QREPORT_PTMMAP_MAKER.out.PTMmaps
+    ch_PTMmaps_filtered  = QREPORT_PTMMAP_MAKER.out.PTMmaps_filtered
+    ch_qReports          = QREPORT_PTMMAP_MAKER.out.qReports
+    ch_FreqTables        = QREPORT_PTMMAP_MAKER.out.FreqTables
 
     emit:
-    PTMmaps = ch_PTMmaps
-    PTMmaps_FDR = ch_PTMmaps_FDR
-    qReports = ch_qReports
-    FreqTables = ch_FreqTables
+    PTMmaps          = ch_PTMmaps
+    PTMmaps_filtered = ch_PTMmaps_filtered
+    qReports         = ch_qReports
+    FreqTables       = ch_FreqTables
 }
 
 workflow QREPORTMAKER {
