@@ -8,6 +8,7 @@ ___
 + ReportAnalysis:
   + New update to the PTMMap program: includes plot parameters, the ability to download the map in SVG format, and more.
   + PTM maps are obtained by group.
++ Rename the PTMmap folder with threshold.
 
 ### Image Version history
 
