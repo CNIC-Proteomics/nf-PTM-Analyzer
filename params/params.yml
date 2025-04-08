@@ -63,11 +63,11 @@ PTMMap:
   groups:
     - H-C
 
-  # Threshold of filtering for the given integrations: pgm2p_NM, pgm2p, p2qf, qf2q
+  # Threshold of filtering for the given integrations: pgm2p_NM, pgm2p, p2qc, qc2q
   threshold_pgm2p_NM: 0.05
   threshold_pgm2p: 0.05
-  threshold_p2qf: 0.05
-  threshold_qf2q: 0.05
+  threshold_p2qc: 0.05
+  threshold_qc2q: 0.05
   pgmFreqThreshold: 0
 
 
