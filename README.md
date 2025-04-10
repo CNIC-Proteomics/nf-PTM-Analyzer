@@ -85,7 +85,7 @@ ln -s ptm_analysis_${IMAGE_VERSION}.sif ptm_analysis.sif
 1. Download sample files
 ```
 cd samples && \
-wget https://zenodo.org/records/XXXX/files/heteroplasmic_heart.zip?download=1 -O heteroplasmic_heart.zip && \
+wget https://zenodo.org/records/15190658/files/heteroplasmic_heart.zip?download=1 -O heteroplasmic_heart.zip && \
 unzip heteroplasmic_heart.zip && \
 cd ..
 ```
