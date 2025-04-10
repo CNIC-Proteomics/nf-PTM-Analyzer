@@ -60,7 +60,7 @@ FDRoptimizer:
     - [ [pgm, LEVEL], [pgmFreq, REL], Z_pgm2p_dNM_limma ]
     - [ [p, LEVEL], [pFreq, REL], Z_p2qc_limma ]
     - [ [qc, LEVEL], [qcFreq, REL], Z_qc2q_limma ]
-    - [ [q, LEVEL], [qcreq, REL], Z_q2all_limma ]
+    - [ [q, LEVEL], [qFreq, REL], Z_q2all_limma ]
 
   # Pair groups to which calculate FDR
   groups:
@@ -167,6 +167,7 @@ qReportMaker:
     - 0.01
     - 0.05
     - 0.1
+    - 1
 
   # Group contrasts to be analysed
   groups:
@@ -249,8 +250,8 @@ qReportMaker:
     - REL
 
   # Column containing protein frequency
-  qcreq:
-    - qcreq
+  qFreq:
+    - qFreq
     - REL
 
   #

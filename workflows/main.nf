@@ -4,6 +4,7 @@
 ========================================================================================
 */
 
+include { MERGEQUANTPDM } from './mergequantpdm'
 include { NMPYCOMPARE } from './nmpycompare'
 include { LIMMACOMPARE } from './limmacompare'
 include { FDROPTIMIZER } from './fdroptimizer'
@@ -32,10 +33,17 @@ workflow PTM_ANALYSIS_WORKFLOW {
     //
     CREATE_INPUT_CHANNEL_PTM_ANALYSIS()
     //
+    // WORKFLOW: Merge the quantification report (from iSanXoT) with the PDM table
+    //
+    MERGEQUANTPDM(
+        CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_quant_file,
+        CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_pdm_file
+    )
+    //
     // WORKFLOW: Calculate NM-corrected values
     //
     NMPYCOMPARE(
-        CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_isanxot_file,
+        MERGEQUANTPDM.out.ofile,
         CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_params_file
     )
     //

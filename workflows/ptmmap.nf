@@ -22,7 +22,7 @@ workflow PTMMAP {
     //
     // SUBMODULE: Optimize the spectral count threshold at each integration step
     //
-    PTM_MAP('04', input_file, params_file)
+    PTM_MAP('05', input_file, params_file)
 
     // return channels
     ch_odir = PTM_MAP.out.odir
