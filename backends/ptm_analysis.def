@@ -3,7 +3,7 @@ From: ubuntu:22.04
 
 %labels
     Author jmrodriguezc@cnic.es
-    Version v0.1.1
+    Version v0.1.2
 
 %help
     This Singularity container is used for the PTM-analysis pipelines:
@@ -14,7 +14,7 @@ From: ubuntu:22.04
     # REPORT-ANALYSIS ---------------------------------------------------------------------------------------------
 
     # REPORT_ANALYSIS_HOME: Setting up the variables
-    REPORT_ANALYSIS_VERSION=v1.03
+    REPORT_ANALYSIS_VERSION=v1.04
     REPORT_ANALYSIS_HOME=/opt/report-analysis
 
 %environment
