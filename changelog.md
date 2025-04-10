@@ -1,4 +1,23 @@
 ___
+## 0.1.2
+
+### Date 📅 *2025_04*
+
+### Changes in detail
+
++ Rename the 'qf' column to 'qc' to maintain consistency with the manuscript's nomenclature.
++ Add the module that merges the quantification report from iSanXoT and the PDM table from PTM-compass.
+
+### Image Version history
+
+| Singularity image (version)                                                                      | Code                                                                     | Version |
+|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|---------|
+| [ptm_analysis:0.1.2](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                          |         |
+|                                                                                                  | [ReportAnalysis](https://github.com/CNIC-Proteomics/ReportAnalysis)      | v1.04   |
+
+
+
+___
 ## 0.1.1
 
 ### Date 📅 *2025_04*
