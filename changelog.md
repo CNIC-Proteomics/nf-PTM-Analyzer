@@ -7,7 +7,8 @@ ___
 
 **rc1**
 + Redefine the process container attribute.
-+ Updated documentation.
++ Updated documentation:
+  - Summary log in the pipeline execution (nextflow).
 
 ### Image Version history
 
