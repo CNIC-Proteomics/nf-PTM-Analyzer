@@ -1,4 +1,30 @@
 ___
+## 0.1.4
+
+### Date 📅 *2025_09*
+
+### Changes in detail
+
+**rc1**
++ Renamed the repository to 'PTM-Analyzer' (previously called ReportAnalysis).
++ Updated to the new version of the PTM-Analyzer repository.
++ In the PTM-Analyzer, we use the PDM table but at the PGM level. We have renamed the processes and files from 'PDM' to 'PGM'.
++ Updated sample parameters.
++ Updated documentation: Zenodo repository.
+
+### Image Version history
+
++ Updated to the new version:
+  - PTM-Analyzer (previously called ReportAnalysis)
+
+| Singularity image (version)                                                                    | Code                                                                 | Version |
+|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------|
+| [ptm_analysis:1.3](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                      |         |
+|                                                                                                | [PTM-Analyzer](https://github.com/CNIC-Proteomics/PTM-Analyzer)      | v1.06   |
+
+
+
+___
 ## 0.1.3
 
 ### Date 📅 *2025_08*
