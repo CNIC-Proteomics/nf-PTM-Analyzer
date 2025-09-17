@@ -1,10 +1,11 @@
 # nf-PTM-Analyzer
 
-nf-PTM-Analyzer is a [Nextflow](https://www.nextflow.io/) pipeline that executes the ReportAnalysis programs.
+nf-PTM-Analyzer is a [Nextflow](https://www.nextflow.io/) pipeline that executes the PTM-Analyzer programs, which enable statistical analysis and quantitative exploration of proteomics data related to post-translational modifications (PTMs).
 
 nf-PTM-Analyzer was developed by the Cardiovascular Proteomics Lab/Proteomic Unit at The National Centre for Cardiovascular Research (CNIC, https://www.cnic.es).
 
 This application is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) License. For further details, read the https://creativecommons.org/licenses/by-nd/4.0/.
+
 
 
 # Installation
@@ -32,11 +33,12 @@ For more information, read the [How to install Nextflow](docs/Nextflow.md) secti
 For more information, read the [How to install Git](docs/Git.md) section.
 
 
+
 # Download the pipeline with the latest release
 
 Export an environment variable to define the version:
 ```
-export PIPELINE_VERSION=0.1.3
+export PIPELINE_VERSION=0.1.4
 ```
 Note: The list of releases is located on the [releases page](https://github.com/CNIC-Proteomics/nf-PTM-Analyzer/releases).
 
@@ -47,11 +49,12 @@ git clone https://github.com/CNIC-Proteomics/nf-PTM-Analyzer.git --branch ${PIPE
 With the *--recursive* parameter, the submodules repositories are cloned as well.
 
 
+
 # Download Singularity images
 
 Export an environment variable to define the version of singularity image:
 ```
-export IMAGE_VERSION=0.1.2
+export IMAGE_VERSION=1.3
 ```
 Note: The list of releases is located on the [singularity repository page](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis).
 
@@ -77,15 +80,19 @@ ln -s ptm_analysis_${IMAGE_VERSION}.sif ptm_analysis.sif
 ```
 
 
+
 # Usage
 
-## Execute the pipeline with samples
+## Samples 1: iSanXoT Report and PDM table for Mouse Heteroplasmia (Heart)
 
+Input files for PTM-Analyzer, derived from the quantification results of iSanXoT [1] and the PDM table from the PTM-compass [2].
+
+The samples originate from `heart` tissue, based on the study by Bagwan N, Bonzon-Kulichenko E, Calvo E, et al. [3].
 
 1. Download sample files
 ```
 cd samples && \
-wget https://zenodo.org/records/15190658/files/heteroplasmic_heart.zip?download=1 -O heteroplasmic_heart.zip && \
+wget https://zenodo.org/records/17141424/files/heteroplasmic_heart.zip?download=1 -O heteroplasmic_heart.zip && \
 unzip heteroplasmic_heart.zip && \
 cd ..
 ```
@@ -97,33 +104,43 @@ nextflow \
     run main.nf   \
         -profile singularity \
         --quant_file "samples/heteroplasmic_heart/inputs/q_all.tsv" \
-        --pdm_file "samples/heteroplasmic_heart/inputs/DMTable_PeakAssignation_FDRfiltered_DM0S_PA_T_PeakAssignation_SS_Heart_FDR_PDMTable_GM_J_PDM_Table_pgmFreq.tsv" \
-        --params_file "samples/heteroplasmic_heart/inputs/params.yml" \
+        --pgm_file "samples/heteroplasmic_heart/inputs/DMTable_PeakAssignation_FDRfiltered_DM0S_PA_T_PeakAssignation_SS_Heart_FDR_PDMTable_GM_J_PGM_Table_pgmFreq.tsv" \
+        --params_file "samples/heteroplasmic_heart/inputs/params_nf.yml" \
         --compa_file "samples/heteroplasmic_heart/inputs/limma_comparisons.tsv" \
         --qmeta_file "samples/heteroplasmic_heart/inputs/myMitocarta.tsv" \
         --outdir  "samples/heteroplasmic_heart/results" \
         -resume
 ```
 
+## Samples 2: iSanXoT Report and PDM table for Mouse Heteroplasmia (Liver)
 
-<!--
-2. Execute the pipeline using iSanXoT report (q_all) and PDM table from PTM-compass as inputs:
-```
-nextflow \
-    -log "/tmp/nextflow/log/nf-ptm-analyzer.log" \
-    run main.nf   \
-        --quant_file "/mnt/tierra/U_Proteomica/UNIDAD/Softwares/jmrodriguezc/nf-PTM-Analyzer/samples/heteroplasmic_heart/inputs/q_all.tsv" \
-        --pdm_file "/mnt/tierra/U_Proteomica/UNIDAD/Softwares/jmrodriguezc/nf-PTM-Analyzer/samples/heteroplasmic_heart/inputs/DMTable_PeakAssignation_FDRfiltered_DM0S_PA_T_PeakAssignation_SS_Heart_FDR_PDMTable_GM_J_PDM_Table_pgmFreq.tsv" \
-        --params_file "/mnt/tierra/U_Proteomica/UNIDAD/Softwares/jmrodriguezc/nf-PTM-Analyzer/samples/heteroplasmic_heart/inputs/params.yml" \
-        --compa_file "/mnt/tierra/U_Proteomica/UNIDAD/Softwares/jmrodriguezc/nf-PTM-Analyzer/samples/heteroplasmic_heart/inputs/limma_comparisons.tsv" \
-        --qmeta_file "/mnt/tierra/U_Proteomica/UNIDAD/Softwares/jmrodriguezc/nf-PTM-Analyzer/samples/heteroplasmic_heart/inputs/myMitocarta.tsv" \
-        --outdir  "/mnt/tierra/U_Proteomica/UNIDAD/Softwares/jmrodriguezc/nf-PTM-Analyzer/samples/heteroplasmic_heart/results" \
-        -resume
-```
--->
+You can download the input files for this `liver` sample, derived from the study by Bagwan N, Bonzon-Kulichenko E, Calvo E, et al. [1] at the following URL:
+
+https://zenodo.org/records/17141424/files/heteroplasmic_liver.zip?download=1
+
+To execute the pipeline, follow the same steps as in Sample 1.
+
+
+## Samples 3: iSanXoT Report and PDM table for Mouse Heteroplasmia (Muscle)
+
+You can download the input files for this sample from the following URL:
+
+https://zenodo.org/records/17141424/files/heteroplasmic_muscle.zip?download=1
+
+To execute the pipeline, follow the same steps as in Sample 1.
+
 
 
 # Image Version History
 
 For more information about the program version included within the Singularity version, refer to the [changelog](changelog.md) for the current version.
 
+
+
+# References
+
+[1] Rodríguez, Jose Manuel et al. *iSanXoT: A standalone application for the integrative analysis of mass spectrometry-based quantitative proteomics data.* Computational and structural biotechnology journal vol. 23 452-459. 26 Dec. 2023, doi: https://doi.org/10.1016/j.csbj.2023.12.034
+
+[2] Cristina A. Devesa, Rafael Barrero-Rodríguez, Andrea Laguillo-Gómez, et al. *Integrative multi-layer workflow for quantitative analysis of post-translational modifications.* bioRxiv 2025.01.20.633864; doi: https://doi.org/10.1101/2025.01.20.633864
+
+[3] Bagwan N, Bonzon-Kulichenko E, Calvo E, et al. *Comprehensive Quantification of the Modified Proteome Reveals Oxidative Heart Damage in Mitochondrial Heteroplasmy*. Cell Reports. 2018;23(12):3685-3697.e4. https://doi.org/10.1016/j.celrep.2018.05.080
