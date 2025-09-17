@@ -32,7 +32,7 @@ workflow QREPORTPTMMAPMAKER {
     //
     // SUBMODULE: Create the PTM maps and obtains the significant changes of proteins
     //
-    QREPORT_PTMMAP_MAKER('05', input_file, qmeta_file, createYamlParamStrChannel(params_file, ['PTMMap','qReportMaker'])) // generate string with the current parameters from the given file
+    QREPORT_PTMMAP_MAKER('05', input_file, qmeta_file, createYamlParamStrChannel(params_file, ['General','PTMMap','qReportMaker'])) // generate string with the current parameters from the given file
 
     // return channels
     ch_PTMmaps           = QREPORT_PTMMAP_MAKER.out.PTMmaps

@@ -12,7 +12,7 @@ include { createYamlParamStrChannel } from '../nf-modules/lib/Utils'
 ========================================================================================
 */
 
-include { NM_PY_COMPARE } from '../nf-modules/modules/ptm_analysis/nmpycompare/main'
+include { MERGE_QUANT_PGM } from '../nf-modules/modules/ptm_analysis/mergequantpgm/main'
 
 /*
 ========================================================================================
@@ -20,20 +20,20 @@ include { NM_PY_COMPARE } from '../nf-modules/modules/ptm_analysis/nmpycompare/m
 ========================================================================================
 */
 
-workflow NMPYCOMPARE {
+workflow MERGEQUANTPGM {
 
     take:
-    input_file
-    params_file
+    quant_file
+    pgm_file
 
     main:
     //
-    // SUBMODULE: calculate NM-corrected values
+    // SUBMODULE: Merge the quantification report (from iSanXoT) with the PDM table
     //
-    NM_PY_COMPARE('02', input_file, createYamlParamStrChannel(params_file, ['General','NMpyCompare'])) // generate string with the current parameters from the given file
+    MERGE_QUANT_PGM('01', quant_file, pgm_file)
 
     // return channels
-    ch_ofile   = NM_PY_COMPARE.out.ofile
+    ch_ofile   = MERGE_QUANT_PGM.out.ofile
 
     emit:
     ofile = ch_ofile

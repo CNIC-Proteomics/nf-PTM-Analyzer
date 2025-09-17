@@ -30,7 +30,7 @@ workflow FDROPTIMIZER {
     //
     // SUBMODULE: Optimize the spectral count threshold at each integration step
     //
-    FDR_OPTIMIZER('04', input_file, createYamlParamStrChannel(params_file, ['FDRoptimizer'])) // generate string with the current parameters from the given file
+    FDR_OPTIMIZER('04', input_file, createYamlParamStrChannel(params_file, ['General','FDRoptimizer'])) // generate string with the current parameters from the given file
 
     // return channels
     ch_ofile = FDR_OPTIMIZER.out.ofile
