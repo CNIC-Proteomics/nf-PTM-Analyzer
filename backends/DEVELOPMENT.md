@@ -2,7 +2,7 @@
 
 Export a env variable to define the version
 ```
-export IMAGE_VERSION=0.1.2
+export IMAGE_VERSION=1.3
 ```
 
 # Build in Singularity

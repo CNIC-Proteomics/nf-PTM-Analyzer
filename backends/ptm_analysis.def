@@ -3,19 +3,19 @@ From: ubuntu:22.04
 
 %labels
     Author jmrodriguezc@cnic.es
-    Version v0.1.2
+    Version 1.3
 
 %help
     This Singularity container is used for the PTM-analysis pipelines:
-    1. ReportAnalysis
+    1. PTM-Analyzer
 
 %arguments
     # Declare variables
-    # REPORT-ANALYSIS ---------------------------------------------------------------------------------------------
+    # PTM-ANALYZER ---------------------------------------------------------------------------------------------
 
-    # REPORT_ANALYSIS_HOME: Setting up the variables
-    REPORT_ANALYSIS_VERSION=v1.04
-    REPORT_ANALYSIS_HOME=/opt/report-analysis
+    # PTM_ANALYZER_HOME: Setting up the variables
+    PTM_ANALYZER_VERSION=1.06
+    PTM_ANALYZER_HOME=/opt/ptm-analyzer
 
 %environment
     # Export env
@@ -23,7 +23,7 @@ From: ubuntu:22.04
 
 %setup
     # # Create the home
-    # mkdir -p "${SINGULARITY_ROOTFS}{{REPORT_ANALYSIS_HOME}}"
+    # mkdir -p "${SINGULARITY_ROOTFS}{{PTM_ANALYZER_HOME}}"
 
 %files
 
@@ -56,15 +56,15 @@ From: ubuntu:22.04
 
 
     #
-    # REPORT_ANALYSIS ---------------------------------------------------------------------------------------------
+    # PTM_ANALYZER ---------------------------------------------------------------------------------------------
     #
 
     # Clone the repository
-    git clone https://github.com/CNIC-Proteomics/ReportAnalysis.git  --branch {{REPORT_ANALYSIS_VERSION}}  {{REPORT_ANALYSIS_HOME}}
+    git clone https://github.com/CNIC-Proteomics/PTM-Analyzer.git  --branch {{PTM_ANALYZER_VERSION}}  {{PTM_ANALYZER_HOME}}
 
     # Python environment --
-    cd {{REPORT_ANALYSIS_HOME}} && python -m venv env
-    . {{REPORT_ANALYSIS_HOME}}/env/bin/activate && pip install -r {{REPORT_ANALYSIS_HOME}}/python_requirements.txt
+    cd {{PTM_ANALYZER_HOME}} && python -m venv env
+    . {{PTM_ANALYZER_HOME}}/env/bin/activate && pip install -r {{PTM_ANALYZER_HOME}}/python_requirements.txt
 
 
 
@@ -98,10 +98,10 @@ From: ubuntu:22.04
         exit 1
     fi
 
-    # REPORT_ANALYSIS ---------------------------------------------------------------------------------------------
+    # PTM_ANALYZER ---------------------------------------------------------------------------------------------
 
-    # Check if REPORT_ANALYSIS has been installed
-    DIR={{REPORT_ANALYSIS_HOME}}
+    # Check if PTM_ANALYZER has been installed
+    DIR={{PTM_ANALYZER_HOME}}
     if [ -d "${DIR}" ]; then
         echo "The ${DIR} directory exists."
     else
@@ -109,12 +109,12 @@ From: ubuntu:22.04
         exit 1
     fi
 
-    # Check if REPORT_ANALYSIS has been installed
-    REPORT_ANALYSIS_test=$(cd {{REPORT_ANALYSIS_HOME}} && . env/bin/activate && python 6_qTableReport/qReportMaker.py -h 2>&1 | grep "usage:")
-    if [ "${REPORT_ANALYSIS_test}" != "" ]; then
-        echo "REPORT_ANALYSIS ${REPORT_ANALYSIS_test} has been installed as expected."
+    # Check if PTM_ANALYZER has been installed
+    PTM_ANALYZER_test=$(cd {{PTM_ANALYZER_HOME}} && . env/bin/activate && python src/qReportMaker.py -h 2>&1 | grep "usage:")
+    if [ "${PTM_ANALYZER_test}" != "" ]; then
+        echo "PTM_ANALYZER ${PTM_ANALYZER_test} has been installed as expected."
     else
-        echo "REPORT_ANALYSIS has not been installed."
+        echo "PTM_ANALYZER has not been installed."
         exit 1
     fi
 
