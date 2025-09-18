@@ -38,7 +38,7 @@ For more information, read the [How to install Git](docs/Git.md) section.
 
 Export an environment variable to define the version:
 ```
-export PIPELINE_VERSION=0.1.4
+export PIPELINE_VERSION=1.4
 ```
 Note: The list of releases is located on the [releases page](https://github.com/CNIC-Proteomics/nf-PTM-Analyzer/releases).
 

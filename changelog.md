@@ -1,5 +1,5 @@
 ___
-## 0.1.4
+## 1.4
 
 ### Date 📅 *2025_09*
 
@@ -11,6 +11,7 @@ ___
 + In the PTM-Analyzer, we use the PDM table but at the PGM level. We have renamed the processes and files from 'PDM' to 'PGM'.
 + Updated sample parameters.
 + Updated documentation: Zenodo repository.
++ Reduce in one dimension the version.
 
 ### Image Version history
 
