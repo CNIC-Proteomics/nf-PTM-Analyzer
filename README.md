@@ -127,7 +127,7 @@ The execution trace for the sample dataset was generated using the `nextflow` co
 
 The trace log shows the execution of each module along with the corresponding **execution time**.
 
-![Execution time screenshot](docs/execution_time_screenshot.png)
+![Execution time screenshot](docs/images/execution_time_screenshot.png)
 
 
 ## Samples 2: iSanXoT Report and PDM table for Mouse Heteroplasmia (Liver)
