@@ -112,6 +112,24 @@ nextflow \
         -resume
 ```
 
+### Hardware specifications
+
+The computational experiment was performed on a virtualized environment running under *Windows Subsystem for Linux 2 (WSL2)*. The software and hardware configuration were as follows:
+
+* Operating system: Ubuntu 22.04.5 LTS (Jammy Jellyfish), kernel version 6.6.87.2
+* Processor: Intel Xeon E5-2670 (Sandy Bridge) with 16 physical cores and 32 threads (Hyper-Threading enabled), base frequency ~2.6 GHz, cache hierarchy: L1 = 1 MB, L2 = 4 MB, L3 = 20 MB
+* Memory (RAM): 39 GiB
+* Storage: ~2 TiB available capacity
+
+### Execution trace with Time log
+
+The execution trace for the sample dataset was generated using the `nextflow` command above.
+
+The trace log shows the execution of each module along with the corresponding **execution time**.
+
+![Execution time screenshot](docs/execution_time_screenshot.png)
+
+
 ## Samples 2: iSanXoT Report and PDM table for Mouse Heteroplasmia (Liver)
 
 You can download the input files for this `liver` sample, derived from the study by Bagwan N, Bonzon-Kulichenko E, Calvo E, et al. [1] at the following URL:
