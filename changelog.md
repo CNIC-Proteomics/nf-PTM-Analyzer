@@ -11,7 +11,7 @@ ___
 + In the PTM-Analyzer, we use the PDM table but at the PGM level. We have renamed the processes and files from 'PDM' to 'PGM'.
 + Updated sample parameters.
 + Updated documentation: Zenodo repository.
-+ Reduce in one dimension the version.
++ Version format reduced from three segments to two (major.minor).
 
 ### Image Version history
 
