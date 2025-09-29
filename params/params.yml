@@ -1,4 +1,25 @@
 #
+# PARAMETERS: General parameters
+#
+General:
+
+  # Number of works in parallel. Othwerise is the 75% of total number of cpu's
+  # n_cpu: 8
+
+  # Comparison groups:
+  # - pair groups for hypothesis testing (LimmaCompare)
+  # - pair groups to which calculate FDR (FDRoptimizer)
+  # - pair groups to plot the PTM maps (PTMmap)
+  # - pair groups to to be analysed (qReport)
+  groups:
+    - [ Heteroplasmy, Control ]
+
+  # Significance value used across multiple modules. Can be either a qvalue or pvalue. Defaults to pvalue.
+  significance_value: 'qvalue'
+
+
+
+#
 # PARAMETERS: NMpyCompare.py
 #
 NMpyCompare:
@@ -18,8 +39,6 @@ LimmaCompare:
     - limma
     - t-test
 
-  hypothesis_testing:
-    - [ H, C ]
 
 
 
@@ -27,10 +46,6 @@ LimmaCompare:
 # PARAMETERS: FDRoptimizer.py
 #
 FDRoptimizer:
-
-  # Pair groups to which calculate FDR
-  groups:
-    - H-C
 
   # FDR thresholds applied
   FDR_Thr:
@@ -52,16 +67,13 @@ PTMMap:
 
   # Plot parameters
   font_size: 50
-  grid: No
+  grid: 'No'
   plot_width: 1700
   plot_height: 850
 
   # How Non-modified are named
   NM: NM
 
-  # Group to be analysed
-  groups:
-    - H-C
 
   # Threshold of filtering for the given integrations: pgm2p_NM, pgm2p, p2qc, qc2q
   threshold_pgm2p_NM: 0.05
@@ -69,6 +81,10 @@ PTMMap:
   threshold_p2qc: 0.05
   threshold_qc2q: 0.05
   pgmFreqThreshold: 0
+
+  # List of selected proteins to plot
+  # Leave blank to plot all proteins
+  selected_proteins: []
 
 
 
@@ -78,14 +94,8 @@ PTMMap:
 qReportMaker:
 
   # FDR threshold used
-  qvThr:
-    - 0.01
-    - 0.05
-    - 0.1
+  qvThr: [0.01, 0.05, 0.1, 1]
 
-  # Group contrasts to be analysed
-  groups:
-    - H-C
 
   #
   # PTM Frequency Table options
