@@ -10,6 +10,7 @@ ___
 
 **rc2**
 + Updated the definition file for singularity.
++ Upgraded the nf-modules.
 
 ### Image Version history
 
