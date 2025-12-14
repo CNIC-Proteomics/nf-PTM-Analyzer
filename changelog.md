@@ -1,4 +1,28 @@
 ___
+## 1.5
+
+### Date 📅 *2025_12*
+
+### Changes in detail
+
+**rc1**
++ Fixed a bug: upgraded the params.yml file.
+
+**rc2**
++ Updated the definition file for singularity.
+
+### Image Version history
+
++ Updated PTM-Analyzer to version 1.08
+
+| Singularity image (version)                                                                    | Code                                                                 | Version |
+|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------|
+| [ptm_analysis:1.4](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                      |         |
+|                                                                                                | [PTM-Analyzer](https://github.com/CNIC-Proteomics/PTM-Analyzer)      | v1.08   |
+
+
+
+___
 ## 1.4
 
 ### Date 📅 *2025_09*
