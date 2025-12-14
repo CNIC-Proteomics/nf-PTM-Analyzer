@@ -3,7 +3,7 @@ From: ubuntu:22.04
 
 %labels
     Author jmrodriguezc@cnic.es
-    Version 1.3
+    Version 1.4
 
 %help
     This Singularity container is used for the PTM-analysis pipelines:
@@ -14,7 +14,7 @@ From: ubuntu:22.04
     # PTM-ANALYZER ---------------------------------------------------------------------------------------------
 
     # PTM_ANALYZER_HOME: Setting up the variables
-    PTM_ANALYZER_VERSION=1.06
+    PTM_ANALYZER_VERSION=1.08
     PTM_ANALYZER_HOME=/opt/ptm-analyzer
 
 %environment
