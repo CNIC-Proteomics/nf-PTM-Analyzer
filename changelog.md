@@ -1,4 +1,23 @@
 ___
+## 1.6
+
+### Date 📅 *2026_01*
+
+### Changes in detail
+
+**rc1**
++ Refine and simplify the code by removing obsolete code.
+
+### Image Version history
+
+| Singularity image (version)                                                                    | Code                                                                 | Version |
+|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------|
+| [ptm_analysis:1.4](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                      |         |
+|                                                                                                | [PTM-Analyzer](https://github.com/CNIC-Proteomics/PTM-Analyzer)      | v1.08   |
+
+
+
+___
 ## 1.5
 
 ### Date 📅 *2025_12*
