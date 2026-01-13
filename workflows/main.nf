@@ -8,19 +8,13 @@ include { MERGEQUANTPGM } from './mergequantpgm'
 include { NMPYCOMPARE } from './nmpycompare'
 include { LIMMACOMPARE } from './limmacompare'
 include { FDROPTIMIZER } from './fdroptimizer'
-include { PTMMAP } from './ptmmap'
-include {
-    QREPORTMAKER;
-    QREPORTPTMMAPMAKER
-} from './qreportmaker'
+include { QREPORTPTMMAPMAKER } from './qreportmaker'
 
 //
 // SUBWORKFLOW: Create input channels
 //
 
-include {
-    CREATE_INPUT_CHANNEL_PTM_ANALYSIS
-} from '../nf-modules/subworkflows/ptm_analysis'
+include { CREATE_INPUT_CHANNEL_PTM_ANALYSIS } from '../nf-modules/subworkflows/ptm_analysis'
 
 
 //
@@ -61,22 +55,6 @@ workflow PTM_ANALYSIS_WORKFLOW {
         LIMMACOMPARE.out.ofile,
         CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_params_file
     )
-    // //
-    // // WORKFLOW: Create PTM maps
-    // //
-    // PTMMAP(
-    //     FDROPTIMIZER.out.ofile,
-    //     CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_params_file
-    // )
-    // //
-    // // WORKFLOW: Calculate the significant changes of proteins
-    // //
-    // QREPORTMAKER(
-    //     FDROPTIMIZER.out.ofile,
-    //     CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_params_file,
-    //     PTMMAP.out.odir,
-    //     CREATE_INPUT_CHANNEL_PTM_ANALYSIS.out.ch_qmeta_file
-    // )
     //
     // WORKFLOW:Create the PTM maps and the significant changes of proteins
     //

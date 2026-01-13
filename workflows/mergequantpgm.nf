@@ -33,10 +33,10 @@ workflow MERGEQUANTPGM {
     MERGE_QUANT_PGM('01', quant_file, pgm_file)
 
     // return channels
-    ch_ofile   = MERGE_QUANT_PGM.out.ofile
+    ofile = MERGE_QUANT_PGM.out.ofile
 
     emit:
-    ofile = ch_ofile
+    ofile
 }
 
 /*

@@ -34,10 +34,10 @@ workflow LIMMACOMPARE {
     LIMMA_COMPARE('03', input_file, compa_file, createYamlParamStrChannel(params_file, ['General','LimmaCompare'])) // generate string with the current parameters from the given file
 
     // return channels
-    ch_ofile   = LIMMA_COMPARE.out.ofile
+    ofile = LIMMA_COMPARE.out.ofile
 
     emit:
-    ofile = ch_ofile
+    ofile
 }
 
 /*

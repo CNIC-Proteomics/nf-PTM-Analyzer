@@ -33,10 +33,10 @@ workflow FDROPTIMIZER {
     FDR_OPTIMIZER('04', input_file, createYamlParamStrChannel(params_file, ['General','FDRoptimizer'])) // generate string with the current parameters from the given file
 
     // return channels
-    ch_ofile = FDR_OPTIMIZER.out.ofile
+    ofile = FDR_OPTIMIZER.out.ofile
 
     emit:
-    ofile = ch_ofile
+    ofile
 }
 
 /*
