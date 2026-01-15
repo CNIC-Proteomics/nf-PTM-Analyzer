@@ -2,7 +2,7 @@
 
 Export a env variable to define the version
 ```
-export IMAGE_VERSION=1.4
+export IMAGE_VERSION=1.5
 ```
 
 # Build in Singularity
@@ -20,7 +20,7 @@ ln -s ptm_analysis_${IMAGE_VERSION}.sif ptm_analysis.sif
 
 Login to Singularity Hub
 ```
-singularity remote login
+singularity remote login SylabsCloud
 ```
 
 Sign your image locally using Singularity CLI.
