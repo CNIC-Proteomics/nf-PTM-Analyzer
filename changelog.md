@@ -8,12 +8,19 @@ ___
 **rc1**
 + Refine and simplify the code by removing obsolete code.
 
+**rc2**
++ Updated PTM-Analyzer to version 1.09
++ Upgrade the Python version to 3.12 in the singularity image using the default Python version from Ubuntu 24.04.
+
 ### Image Version history
+
++ Updated to the new version:
+  - PTM-Analyzer 1.09
 
 | Singularity image (version)                                                                    | Code                                                                 | Version |
 |------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------|
-| [ptm_analysis:1.4](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                      |         |
-|                                                                                                | [PTM-Analyzer](https://github.com/CNIC-Proteomics/PTM-Analyzer)      | v1.08   |
+| [ptm_analysis:1.5](https://cloud.sylabs.io/library/proteomicscnic/next-launcher/ptm_analysis)  |                                                                      |         |
+|                                                                                                | [PTM-Analyzer](https://github.com/CNIC-Proteomics/PTM-Analyzer)      | 1.09    |
 
 
 
